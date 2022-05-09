@@ -1,43 +1,47 @@
 public class RecommendId {
-    public boolean isValid(String newId) {
-//        if (newId == null || (newId.length() < 3 || newId.length() > 15))
-//            return false;
-        if (newId.matches("^[a-z0-9-_]{1}[a-z0-9-_.]{2,14}$"))
-            return true;
+    private String newId;
 
-        return false;
+    public String getNewId() {
+        return this.newId;
     }
 
-    public String replaceToLowerCase(String newId) {
-        return newId.toLowerCase();
+    public RecommendId replaceToLowerCase(String newId) {
+        this.newId = newId.toLowerCase();
+        return this;
     }
 
-    public String removeNotUsedLetter(String newId) {
-        return newId.replaceAll("[^a-z0-9\\-_.]*", "");
+    public RecommendId removeNotUsedLetter(String newId) {
+        this.newId = newId.replaceAll("[^a-z0-9\\-_.]*", "");
+        return this;
     }
 
-    public String replaceContinuedDotToSingleDot(String newId) {
-        return newId.replaceAll("[.]+", ".");
+    public RecommendId replaceContinuedDotToSingleDot(String newId) {
+        this.newId = newId.replaceAll("[.]+", ".");
+        return this;
     }
 
-    public String removeEndDot(String newId) {
-        return newId.replaceAll("^[.]|[.]$", "");
+    public RecommendId removeEndDot(String newId) {
+        this.newId = newId.replaceAll("^[.]|[.]$", "");
+        return this;
     }
 
-    public String putStringInEmptyString(String newId) {
-        return newId.replaceAll("\\s", "").replaceAll("^$", "a");
+    public RecommendId putStringInEmptyString(String newId) {
+        this.newId = newId.replaceAll("\\s", "").replaceAll("^$", "a");
+        return this;
     }
 
-    public String removeOverMaxLength(String newId) {
-        return newId.replaceAll("^{16,}$", "");
+    public RecommendId removeOverMaxLength(String newId) {
+        this.newId = newId.replaceAll("^{16,}$", "");
+        return this;
     }
 
-    public String putStringUnderMinLength(String newId) {
+    public RecommendId putStringUnderMinLength(String newId) {
         if (newId.length() < 3) {
             while (newId.length() < 3) {
                 newId += newId.charAt(newId.length() - 1);
             }
         }
-        return newId;
+        this.newId = newId;
+        return this;
     }
 }
