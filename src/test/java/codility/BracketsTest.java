@@ -16,4 +16,13 @@ public class BracketsTest {
 
         assertThat(answer).isEqualTo(expected);
     }
+
+    @Test
+    void Empty_String_테스트() {
+        Brackets brackets = new Brackets();
+
+        int answer = brackets.solution("");
+
+        assertThat(answer).isEqualTo(1);
+    }
 }
